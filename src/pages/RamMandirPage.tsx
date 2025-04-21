@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageBanner from '../components/PageBanner';
+import {cn} from "../lib/utils";
 import FlowerPetals from '../components/FlowerPetals';
 import { Clock, LinkIcon, MapPin } from 'lucide-react';
 import { useAnimateOnScroll } from '../hooks/useAnimateOnScroll';
@@ -15,12 +16,21 @@ const RamMandirPage = () => {
   return (
     <div className="page-transition pb-8 pt-16">
       <FlowerPetals />
-      
-      <PageBanner 
-        title="Ram Mandir" 
-        subtitle="The Sacred Temple of Lord Ram in Ayodhya" 
-        backgroundImage="/lovable-uploads/5fbba0ac-ec87-4b26-bf98-1bfbb4f20315.png"
-      />
+        <div className="relative w-full h-[400px] md:h-[500px] overflow-hidden">
+            <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Ayodhya_Ram_Mandir_Inauguration_Day_Picture.jpg/1200px-Ayodhya_Ram_Mandir_Inauguration_Day_Picture.jpg"
+                alt="Ram Mandir"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-black/50"></div>
+            <div className="relative z-10 flex flex-col justify-center items-center h-full">
+                <h1 className="text-white font-bold text-4xl md:text-6xl mb-2 text-center drop-shadow-md">
+                    Ram Mandir
+                </h1>
+                <p className="text-white text-center text-xl md:text-2xl drop-shadow-md">The Sacred Temple of Lord Ram in Ayodhya</p>
+            </div>
+
+        </div>
       
       <div className="container mx-auto px-4">
         {/* Introduction Section */}
@@ -119,7 +129,7 @@ const RamMandirPage = () => {
             </div>
             <div className="rounded-lg overflow-hidden shadow-xl">
               <img 
-                src="/lovable-uploads/5fbba0ac-ec87-4b26-bf98-1bfbb4f20315.png" 
+                src="https://english.cdn.zeenews.com/sites/default/files/2022/09/11/1089010-05082022-ayodhyarammandir822954703.jpg" 
                 alt="Ram Mandir Architecture" 
                 className="w-full h-auto"
               />

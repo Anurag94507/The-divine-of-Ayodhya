@@ -21,7 +21,10 @@ const Card: React.FC<CardProps> = ({
   const cardRef = useAnimateOnScroll();
   
   return (
-    <div className="card-custom flex flex-col h-full" ref={cardRef}>
+    <div 
+      className="card-custom flex flex-col h-full transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1" // Added hover animation classes
+      ref={cardRef}
+    >
       <div className="image-container h-48 sm:h-56 overflow-hidden">
         <img 
           src={imageSrc} 

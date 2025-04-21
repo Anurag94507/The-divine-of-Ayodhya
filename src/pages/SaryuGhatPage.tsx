@@ -17,7 +17,7 @@ const SaryuGhatPage = () => {
         <PageBanner 
           title="Saryu Ghat" 
           subtitle="The Sacred River Bank of Ayodhya" 
-          backgroundImage="/lovable-uploads/saryu-ghat.jpg"
+          backgroundImage="https://images.nativeplanet.com/hi/img/2024/01/feature-1704454134.jpg"
         />
         
         <div className="container mx-auto px-4">
@@ -40,8 +40,8 @@ const SaryuGhatPage = () => {
             <div className="grid md:grid-cols-2 gap-8 items-center section-animate">
               <div className="rounded-lg overflow-hidden shadow-xl">
                 <img 
-                  src="/lovable-uploads/2ec52b14-6110-43c0-8ecd-1ec96dcabe87.png" 
-                  alt="Saryu Ghat at Sunset" 
+                  src="https://travelsetu.com/apps/uploads/new_destinations_photos/destination/2024/01/05/753b44e8435f5875b4936a368faf9a4a_1000x1000.jpg" 
+                  alt="Saryu Ghat Rituals" 
                   className="w-full h-auto"
                 />
               </div>

@@ -1,29 +1,28 @@
-
 import React from 'react';
 
 interface PageBannerProps {
   title: string;
   subtitle?: string;
-  backgroundImage?: string;
+  backgroundImage: string;
 }
 
 const PageBanner: React.FC<PageBannerProps> = ({ 
   title, 
   subtitle, 
-  backgroundImage = '/images/ram-mandir-bg.jpg' 
+  backgroundImage 
 }) => {
   return (
     <div 
-      className="relative h-64 md:h-80 flex items-center justify-center mb-12"
-      style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+      className="relative min-h-[80vh] md:min-h-[90vh] flex items-center justify-center mb-12 bg-cover bg-center bg-no-repeat" // Increased height values
+      style={{ 
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${backgroundImage})`,
+        backgroundAttachment: 'fixed' // Added for parallax effect like homepage
       }}
     >
-      <div className="text-center text-white z-10 p-4">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">{title}</h1>
-        {subtitle && <p className="text-xl md:text-2xl max-w-3xl mx-auto">{subtitle}</p>}
+      {/* Overlay div removed, gradient applied via style */}
+      <div className="relative text-center z-10 p-4 max-w-4xl mx-auto"> 
+        <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg text-black">{title}</h1>
+        {subtitle && <p className="text-xl md:text-2xl font-bold drop-shadow-lg text-black">{subtitle}</p>}
       </div>
     </div>
   );

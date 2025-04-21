@@ -17,7 +17,7 @@ const KanakBhawanPage = () => {
       <PageBanner 
         title="Kanak Bhawan" 
         subtitle="The Golden Palace of Sita and Ram" 
-        backgroundImage="/lovable-uploads/1c7b6ffe-16a9-4b55-be3d-80fabe1e6c79.png"
+        backgroundImage="https://www.trawell.in/admin/images/upload/599531656Kanak_Bhawan.jpg"
       />
       
       <div className="container mx-auto px-4">

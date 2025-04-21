@@ -20,7 +20,7 @@ const HanumanGarhiPage = () => {
         <PageBanner 
           title="Hanuman Garhi" 
           subtitle="The Sacred Abode of Lord Hanuman" 
-          backgroundImage="/lovable-uploads/5fbba0ac-ec87-4b26-bf98-1bfbb4f20315.png"
+          backgroundImage="https://static.langimg.com/photo/imgsize-739162,msid-107046133/navbharat-times.jpg"
         />
         
         <div className="container mx-auto px-4">
@@ -54,7 +54,7 @@ const HanumanGarhiPage = () => {
               </div>
               <div className="rounded-lg overflow-hidden shadow-xl">
                 <img 
-                  src="/lovable-uploads/5fbba0ac-ec87-4b26-bf98-1bfbb4f20315.png" 
+                  src="https://resize.indiatv.in/resize/newbucket/1080_1920/2024/01/copy-of-untitled-6-1704251550.jpg" 
                   alt="Hanuman Garhi Temple" 
                   className="w-full h-auto"
                 />

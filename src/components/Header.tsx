@@ -54,7 +54,7 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2">
-          <img src="/images/logo.png" alt="Ayodhya Blessings" className="h-8" />
+          <img src="/images/ayodhya-google-logo.png" alt="Ayodhya Blessings" className="h-8" />
           <span className={`font-['Yatra_One'] text-lg ${isScrolled ? 'text-ayodhya-maroon' : 'text-ayodhya-maroon'}`}>
             Ayodhya Blessings
           </span>
