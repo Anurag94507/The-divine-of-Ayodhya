@@ -21,8 +21,8 @@ const PageBanner: React.FC<PageBannerProps> = ({
     >
       {/* Overlay div removed, gradient applied via style */}
       <div className="relative text-center z-10 p-4 max-w-4xl mx-auto"> 
-        <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg text-black">{title}</h1>
-        {subtitle && <p className="text-xl md:text-2xl font-bold drop-shadow-lg text-black">{subtitle}</p>}
+        <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg text-white" style={{ WebkitTextStroke: '1px black', textStroke: '1px black' }}>{title}</h1>
+        {subtitle && <p className="text-xl md:text-2xl font-bold drop-shadow-lg text-white" style={{ WebkitTextStroke: '1px black', textStroke: '1px black' }}>{subtitle}</p>}
       </div>
     </div>
   );

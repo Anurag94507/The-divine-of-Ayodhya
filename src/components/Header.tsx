@@ -55,7 +55,11 @@ const Header = () => {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2">
           <img src="/images/ayodhya-google-logo.png" alt="Ayodhya Blessings" className="h-8" />
-          <span className={`font-['Yatra_One'] text-lg ${isScrolled ? 'text-ayodhya-maroon' : 'text-ayodhya-maroon'}`}>
+          <span className={`font-['Yatra_One'] text-lg ${
+            isScrolled 
+              ? 'text-ayodhya-maroon' 
+              : 'text-white'
+          }`} style={!isScrolled ? { textShadow: '1px 1px 2px rgba(0, 0, 0, 0.7)' } : {}}> {/* Added text-shadow when not scrolled */}
             Ayodhya Blessings
           </span>
         </Link>
@@ -69,9 +73,12 @@ const Header = () => {
               className={`px-2 py-1 text-sm font-medium transition-colors ${
                 location.pathname === link.path
                   ? 'text-ayodhya-saffron'
-                  : `${isScrolled ? 'text-gray-700 hover:text-ayodhya-saffron' : 'text-gray-800 hover:text-ayodhya-saffron'}`
+                  : `${isScrolled 
+                      ? 'text-gray-700 hover:text-ayodhya-saffron' 
+                      : 'text-white hover:text-ayodhya-saffron'
+                    }`
               }`}
-            >
+              style={!isScrolled ? { textShadow: '1px 1px 2px rgba(0, 0, 0, 0.7)' } : {}}> {/* Added text-shadow when not scrolled */}
               {link.name}
             </Link>
           ))}
@@ -79,7 +86,9 @@ const Header = () => {
 
         {/* Mobile menu button */}
         <button 
-          className="md:hidden text-gray-700"
+          className={`md:hidden ${
+            isScrolled ? 'text-gray-700' : 'text-white'
+          }`}
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
         >

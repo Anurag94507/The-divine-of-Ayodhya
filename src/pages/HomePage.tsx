@@ -7,6 +7,7 @@ import { useAnimateOnScroll } from '../hooks/useAnimateOnScroll';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Utensils, BedDouble, Camera, Map, Landmark } from 'lucide-react'; // Using Landmark icon
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import AnimatedCardWrapper from '../components/AnimatedCardWrapper'; // Import the wrapper
 
 const HomePage = () => {
   useEffect(() => {
@@ -47,7 +48,6 @@ const HomePage = () => {
         <section className="py-16 bg-white section-animate">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center text-ayodhya-maroon mb-10 flex items-center justify-center gap-2">
-              {/* Using Landmark icon to avoid previous errors */}
               <Landmark className="w-8 h-8 text-ayodhya-saffron" />
               Sacred Places to Visit
             </h2>
@@ -60,79 +60,84 @@ const HomePage = () => {
                 <TabsTrigger value="saryu-ghat" className="data-[state=active]:bg-ayodhya-saffron data-[state=active]:text-white">Saryu Ghat</TabsTrigger>
               </TabsList>
               <TabsContent value="ram-mandir">
-                <Card className="border-ayodhya-orange">
-                  <CardHeader>
-                    <CardTitle className="text-ayodhya-maroon">Ram Mandir</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex flex-col md:flex-row items-center gap-6">
-                    {/* Verified image path */}
-                    <img src="/assets/images/Ram Mandir.png" alt="Ram Mandir" className="w-full md:w-1/3 rounded-lg shadow-md object-cover h-48"/>
-                    <div>
-                      <p className="mb-4">The magnificent temple dedicated to Lord Ram, built at his sacred birthplace, Ram Janmabhoomi. A symbol of immense faith and architectural grandeur.</p>
-                      <Link to="/ram-mandir"><Button variant="link" className="text-ayodhya-saffron p-0">Learn More →</Button></Link>
-                    </div>
-                  </CardContent>
-                </Card>
+                <AnimatedCardWrapper>
+                  <Card className="border-ayodhya-orange">
+                    <CardHeader>
+                      <CardTitle className="text-ayodhya-maroon">Ram Mandir</CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex flex-col md:flex-row items-center gap-6">
+                      <img src="/assets/images/Ram Mandir.png" alt="Ram Mandir" className="w-full md:w-1/3 rounded-lg shadow-md object-cover h-48"/>
+                      <div>
+                        <p className="mb-4">The magnificent temple dedicated to Lord Ram, built at his sacred birthplace, Ram Janmabhoomi. A symbol of immense faith and architectural grandeur.</p>
+                        <Link to="/ram-mandir"><Button variant="link" className="text-ayodhya-saffron p-0">Learn More →</Button></Link>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </AnimatedCardWrapper>
               </TabsContent>
               <TabsContent value="kanak-bhawan">
-                <Card className="border-ayodhya-orange">
-                  <CardHeader>
-                    <CardTitle className="text-ayodhya-maroon">Kanak Bhawan</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex flex-col md:flex-row items-center gap-6">
-                    {/* Verified image path */}
-                    <img src="/assets/images/kanak-bhawan.png" alt="Kanak Bhawan" className="w-full md:w-1/3 rounded-lg shadow-md object-cover h-48"/>
-                    <div>
-                      <p className="mb-4">Meaning 'Golden House', this temple was believed to be gifted by Queen Kaikeyi to Goddess Sita. It houses beautifully adorned idols of Lord Ram and Sita.</p>
-                      <Link to="/kanak-bhawan"><Button variant="link" className="text-ayodhya-saffron p-0">Learn More →</Button></Link>
-                    </div>
-                  </CardContent>
-                </Card>
+                 <AnimatedCardWrapper>
+                  <Card className="border-ayodhya-orange">
+                    <CardHeader>
+                      <CardTitle className="text-ayodhya-maroon">Kanak Bhawan</CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex flex-col md:flex-row items-center gap-6">
+                      <img src="/assets/images/kanak-bhawan.png" alt="Kanak Bhawan" className="w-full md:w-1/3 rounded-lg shadow-md object-cover h-48"/>
+                      <div>
+                        <p className="mb-4">Meaning 'Golden House', this temple was believed to be gifted by Queen Kaikeyi to Goddess Sita. It houses beautifully adorned idols of Lord Ram and Sita.</p>
+                        <Link to="/kanak-bhawan"><Button variant="link" className="text-ayodhya-saffron p-0">Learn More →</Button></Link>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </AnimatedCardWrapper>
               </TabsContent>
               <TabsContent value="hanuman-garhi">
-                <Card className="border-ayodhya-orange">
-                  <CardHeader>
-                    <CardTitle className="text-ayodhya-maroon">Hanuman Garhi</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex flex-col md:flex-row items-center gap-6">
-                    {/* Verified image path from lovable-uploads */}
-                    <img src="/lovable-uploads/2ec52b14-6110-43c0-8ecd-1ec96dcabe87.png" alt="Hanuman Garhi" className="w-full md:w-1/3 rounded-lg shadow-md object-cover h-48"/>
-                    <div>
-                      <p className="mb-4">A prominent 10th-century temple dedicated to Lord Hanuman, situated atop a hill. It requires climbing 76 steps and offers panoramic views of Ayodhya.</p>
-                      <Link to="/hanuman-garhi"><Button variant="link" className="text-ayodhya-saffron p-0">Learn More →</Button></Link>
-                    </div>
-                  </CardContent>
-                </Card>
+                <AnimatedCardWrapper>
+                  <Card className="border-ayodhya-orange">
+                    <CardHeader>
+                      <CardTitle className="text-ayodhya-maroon">Hanuman Garhi</CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex flex-col md:flex-row items-center gap-6">
+                      <img src="/lovable-uploads/2ec52b14-6110-43c0-8ecd-1ec96dcabe87.png" alt="Hanuman Garhi" className="w-full md:w-1/3 rounded-lg shadow-md object-cover h-48"/>
+                      <div>
+                        <p className="mb-4">A prominent 10th-century temple dedicated to Lord Hanuman, situated atop a hill. It requires climbing 76 steps and offers panoramic views of Ayodhya.</p>
+                        <Link to="/hanuman-garhi"><Button variant="link" className="text-ayodhya-saffron p-0">Learn More →</Button></Link>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </AnimatedCardWrapper>
               </TabsContent>
               <TabsContent value="dashrath-mahal">
-                <Card className="border-ayodhya-orange">
-                  <CardHeader>
-                    <CardTitle className="text-ayodhya-maroon">Raja Dasharath Mahal</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex flex-col md:flex-row items-center gap-6">
-                    {/* Verified image path from lovable-uploads */}
-                     <img src="/lovable-uploads/5fbba0ac-ec87-4b26-bf98-1bfbb4f20315.png" alt="Dasharath Mahal" className="w-full md:w-1/3 rounded-lg shadow-md object-cover h-48"/>
-                     <div>
-                      <p className="mb-4">The palace believed to be the residence of King Dasharath, Lord Ram's father. It showcases ancient architecture and houses shrines within its complex.</p>
-                      <Link to="/raja-dasharath-mahal"><Button variant="link" className="text-ayodhya-saffron p-0">Learn More →</Button></Link>
-                     </div>
-                  </CardContent>
-                </Card>
+                <AnimatedCardWrapper>
+                  <Card className="border-ayodhya-orange">
+                    <CardHeader>
+                      <CardTitle className="text-ayodhya-maroon">Raja Dasharath Mahal</CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex flex-col md:flex-row items-center gap-6">
+                       <img src="/lovable-uploads/5fbba0ac-ec87-4b26-bf98-1bfbb4f20315.png" alt="Dasharath Mahal" className="w-full md:w-1/3 rounded-lg shadow-md object-cover h-48"/>
+                       <div>
+                        <p className="mb-4">The palace believed to be the residence of King Dasharath, Lord Ram's father. It showcases ancient architecture and houses shrines within its complex.</p>
+                        <Link to="/raja-dasharath-mahal"><Button variant="link" className="text-ayodhya-saffron p-0">Learn More →</Button></Link>
+                       </div>
+                    </CardContent>
+                  </Card>
+                </AnimatedCardWrapper>
               </TabsContent>
               <TabsContent value="saryu-ghat">
-                <Card className="border-ayodhya-orange">
-                  <CardHeader>
-                    <CardTitle className="text-ayodhya-maroon">Saryu Ghat</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex flex-col md:flex-row items-center gap-6">
-                    {/* Verified image path from lovable-uploads */}
-                     <img src="/lovable-uploads/e951e0a0-7b70-48a3-843c-f721376b6a80.png" alt="Saryu Ghat" className="w-full md:w-1/3 rounded-lg shadow-md object-cover h-48"/>
-                     <div>
-                       <p className="mb-4">The sacred banks of the Saryu River, where pilgrims take holy dips. The evening Aarti ceremony here is a mesmerizing spiritual experience.</p>
-                       <Link to="/saryu-ghat"><Button variant="link" className="text-ayodhya-saffron p-0">Learn More →</Button></Link>
-                     </div>
-                  </CardContent>
-                </Card>
+                <AnimatedCardWrapper>
+                  <Card className="border-ayodhya-orange">
+                    <CardHeader>
+                      <CardTitle className="text-ayodhya-maroon">Saryu Ghat</CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex flex-col md:flex-row items-center gap-6">
+                       <img src="/lovable-uploads/e951e0a0-7b70-48a3-843c-f721376b6a80.png" alt="Saryu Ghat" className="w-full md:w-1/3 rounded-lg shadow-md object-cover h-48"/>
+                       <div>
+                         <p className="mb-4">The sacred banks of the Saryu River, where pilgrims take holy dips. The evening Aarti ceremony here is a mesmerizing spiritual experience.</p>
+                         <Link to="/saryu-ghat"><Button variant="link" className="text-ayodhya-saffron p-0">Learn More →</Button></Link>
+                       </div>
+                    </CardContent>
+                  </Card>
+                </AnimatedCardWrapper>
               </TabsContent>
             </Tabs>
           </div>
@@ -144,56 +149,64 @@ const HomePage = () => {
             <h2 className="text-3xl font-bold text-center text-ayodhya-maroon mb-10">Plan Your Visit</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Feature 1: Places to Visit (Gallery Link) */}
-              <Link to="/gallery" className="block group">
-                <Card className="text-center hover:shadow-xl transition-shadow duration-300 h-full">
-                  <CardHeader>
-                    <Map className="w-12 h-12 mx-auto text-ayodhya-saffron mb-3 group-hover:scale-110 transition-transform" />
-                    <CardTitle className="text-ayodhya-maroon">Sacred Places</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p>Discover the holiest sites and temples in Ayodhya.</p>
-                  </CardContent>
-                </Card>
-              </Link>
+              <AnimatedCardWrapper className="block group h-full">
+                <Link to="/gallery">
+                  <Card className="text-center hover:shadow-xl transition-shadow duration-300 h-full">
+                    <CardHeader>
+                      <Map className="w-12 h-12 mx-auto text-ayodhya-saffron mb-3 group-hover:scale-110 transition-transform" />
+                      <CardTitle className="text-ayodhya-maroon">Sacred Places</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p>Discover the holiest sites and temples in Ayodhya.</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </AnimatedCardWrapper>
 
               {/* Feature 2: Accommodation */}
-              <Link to="/hotels" className="block group">
-                <Card className="text-center hover:shadow-xl transition-shadow duration-300 h-full">
-                  <CardHeader>
-                    <BedDouble className="w-12 h-12 mx-auto text-ayodhya-saffron mb-3 group-hover:scale-110 transition-transform" />
-                    <CardTitle className="text-ayodhya-maroon">Accommodation</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p>Find comfortable stays from hotels to dharmshalas.</p>
-                  </CardContent>
-                </Card>
-              </Link>
+              <AnimatedCardWrapper className="block group h-full">
+                <Link to="/hotels">
+                  <Card className="text-center hover:shadow-xl transition-shadow duration-300 h-full">
+                    <CardHeader>
+                      <BedDouble className="w-12 h-12 mx-auto text-ayodhya-saffron mb-3 group-hover:scale-110 transition-transform" />
+                      <CardTitle className="text-ayodhya-maroon">Accommodation</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p>Find comfortable stays from hotels to dharmshalas.</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </AnimatedCardWrapper>
 
               {/* Feature 3: Food */}
-              <Link to="/restaurants" className="block group">
-                <Card className="text-center hover:shadow-xl transition-shadow duration-300 h-full">
-                  <CardHeader>
-                    <Utensils className="w-12 h-12 mx-auto text-ayodhya-saffron mb-3 group-hover:scale-110 transition-transform" />
-                    <CardTitle className="text-ayodhya-maroon">Local Cuisine</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p>Savor authentic flavors and local vegetarian delicacies.</p>
-                  </CardContent>
-                </Card>
-              </Link>
+              <AnimatedCardWrapper className="block group h-full">
+                <Link to="/restaurants">
+                  <Card className="text-center hover:shadow-xl transition-shadow duration-300 h-full">
+                    <CardHeader>
+                      <Utensils className="w-12 h-12 mx-auto text-ayodhya-saffron mb-3 group-hover:scale-110 transition-transform" />
+                      <CardTitle className="text-ayodhya-maroon">Local Cuisine</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p>Savor authentic flavors and local vegetarian delicacies.</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </AnimatedCardWrapper>
 
               {/* Feature 4: Gallery */}
-              <Link to="/gallery" className="block group">
-                <Card className="text-center hover:shadow-xl transition-shadow duration-300 h-full">
-                  <CardHeader>
-                    <Camera className="w-12 h-12 mx-auto text-ayodhya-saffron mb-3 group-hover:scale-110 transition-transform" />
-                    <CardTitle className="text-ayodhya-maroon">Photo Gallery</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p>View captivating images of Ayodhya's beauty.</p>
-                  </CardContent>
-                </Card>
-              </Link>
+              <AnimatedCardWrapper className="block group h-full">
+                <Link to="/gallery">
+                  <Card className="text-center hover:shadow-xl transition-shadow duration-300 h-full">
+                    <CardHeader>
+                      <Camera className="w-12 h-12 mx-auto text-ayodhya-saffron mb-3 group-hover:scale-110 transition-transform" />
+                      <CardTitle className="text-ayodhya-maroon">Photo Gallery</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p>View captivating images of Ayodhya's beauty.</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </AnimatedCardWrapper>
             </div>
           </div>
         </section>
@@ -215,7 +228,6 @@ const HomePage = () => {
               </div>
               <div className="rounded-lg overflow-hidden shadow-xl">
                 <img
-                  // Using verified Saryu Ghat image path
                   src="/lovable-uploads/e951e0a0-7b70-48a3-843c-f721376b6a80.png"
                   alt="Saryu River, Ayodhya"
                   className="w-full h-auto object-cover"

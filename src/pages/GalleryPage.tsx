@@ -38,7 +38,7 @@ const GalleryPage = () => {
       description: 'Believed to be gifted by Kaikeyi to Sita, this temple houses beautifully adorned idols of Ram and Sita.'
     },
     {
-      src: '/lovable-uploads/e951e0a0-7b70-48a3-843c-f721376b6a80.png', 
+      src: '/assets/images/ram ji.jpg', 
       alt: 'Saryu River Ghat',
       title: 'Serene Saryu Ghat',
       description: 'The sacred Saryu river flowing peacefully, where pilgrims take holy dips and perform rituals.'
@@ -97,21 +97,25 @@ const GalleryPage = () => {
               {galleryItems.map((item, index) => (
                 <Dialog key={index} onOpenChange={open => !open && setIsDialogOpen(false)}>
                   <DialogTrigger asChild>
-                    <div 
-                      className="relative group cursor-pointer rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105" 
-                      onClick={() => openDialog(index)} // Trigger dialog on click
-                    >
-                      <img 
-                        src={item.src} 
-                        alt={item.alt} 
-                        className="w-full h-64 object-cover" 
-                      />
-                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 flex items-center justify-center">
-                        <p className="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-4 text-center">
-                          {item.title}
-                        </p>
-                      </div>
-                    </div>
+                    <div
+  className={`
+    relative group cursor-pointer rounded-lg overflow-hidden shadow-lg w-full
+    ${item.title === 'Serene Saryu Ghat' ? 'h-96' : 'h-48'}
+  `}
+  onClick={() => openDialog(index)}
+>
+  <img
+    src={item.src}
+    alt={item.alt}
+    className="w-full h-full object-cover object-bottom transition-transform duration-300 ease-in-out scale-105 group-hover:scale-100"
+  />
+  {/* Overlay for Title */}
+  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 flex items-end justify-center p-4">
+    <p className="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
+      {item.title}
+    </p>
+  </div>
+</div>
                   </DialogTrigger>
                 </Dialog>
               ))}
@@ -144,7 +148,9 @@ const GalleryPage = () => {
                         <p className="mt-2 text-center text-sm text-gray-700 px-4">{item.description}</p>
                       </div>
                     </CarouselItem>
-                  ))}
+                  ))
+
+                  }
                 </CarouselContent>
                 <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
                   <CarouselPrevious className="text-white bg-black/50 hover:bg-black/70 border-none" />

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import PageBanner from '../components/PageBanner';
 import FlowerPetals from '../components/FlowerPetals';
 import { useAnimateOnScroll } from '../hooks/useAnimateOnScroll';
+import AnimatedCardWrapper from '../components/AnimatedCardWrapper'; // Import the wrapper
 
 const AboutPage = () => {
   useEffect(() => {
@@ -52,43 +53,51 @@ const AboutPage = () => {
         <section className="max-w-4xl mx-auto mb-16 bg-ayodhya-cream p-8 rounded-lg section-animate">
           <h2 className="text-3xl font-bold text-ayodhya-maroon mb-6 text-center">Our Values</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-ayodhya-maroon mb-3">Devotion</h3>
-              <p>
-                We approach our work with deep reverence for the spiritual significance of Ayodhya and its temples.
-              </p>
-            </div>
+            <AnimatedCardWrapper className="h-full">
+              <div className="bg-white p-6 rounded-lg shadow-md h-full">
+                <h3 className="text-xl font-bold text-ayodhya-maroon mb-3">Devotion</h3>
+                <p>
+                  We approach our work with deep reverence for the spiritual significance of Ayodhya and its temples.
+                </p>
+              </div>
+            </AnimatedCardWrapper>
 
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-ayodhya-maroon mb-3">Service</h3>
-              <p>
-                We are committed to serving pilgrims by providing accurate and helpful information that enhances their spiritual journey.
-              </p>
-            </div>
+            <AnimatedCardWrapper className="h-full">
+              <div className="bg-white p-6 rounded-lg shadow-md h-full">
+                <h3 className="text-xl font-bold text-ayodhya-maroon mb-3">Service</h3>
+                <p>
+                  We are committed to serving pilgrims by providing accurate and helpful information that enhances their spiritual journey.
+                </p>
+              </div>
+            </AnimatedCardWrapper>
 
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-ayodhya-maroon mb-3">Authenticity</h3>
-              <p>
-                We ensure that all information provided is authentic, reliable, and respectful of the cultural and religious traditions of Ayodhya.
-              </p>
-            </div>
+            <AnimatedCardWrapper className="h-full">
+              <div className="bg-white p-6 rounded-lg shadow-md h-full">
+                <h3 className="text-xl font-bold text-ayodhya-maroon mb-3">Authenticity</h3>
+                <p>
+                  We ensure that all information provided is authentic, reliable, and respectful of the cultural and religious traditions of Ayodhya.
+                </p>
+              </div>
+            </AnimatedCardWrapper>
           </div>
         </section>
 
         {/* Developer Information */}
         <section className="max-w-4xl mx-auto mb-16 section-animate">
           <h2 className="text-3xl font-bold text-ayodhya-maroon mb-6 text-center">Website Developer</h2>
-          <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-            <h3 className="text-2xl font-bold text-ayodhya-maroon mb-3">Kartikey Vishwakarma</h3>
-            <p className="text-lg mb-4">Full-stack Developer & Designer</p>
-            <div className="mb-4">
-              <p className="text-gray-700 mb-1"><strong>Phone:</strong> 6394650470</p>
-              <p className="text-gray-700"><strong>Email:</strong> kartikeyvishwakarma@gmail.com</p>
+          <AnimatedCardWrapper>
+            <div className="bg-white p-8 rounded-lg shadow-lg text-center">
+              <h3 className="text-2xl font-bold text-ayodhya-maroon mb-3">Kartikey Vishwakarma</h3>
+              <p className="text-lg mb-4">Full-stack Developer & Designer</p>
+              <div className="mb-4">
+                <p className="text-gray-700 mb-1"><strong>Phone:</strong> 6394650470</p>
+                <p className="text-gray-700"><strong>Email:</strong> kartikeyvishwakarma@gmail.com</p>
+              </div>
+              <p className="text-gray-600 italic">
+                "Dedicated to creating digital experiences that blend technology with spiritual values, helping pilgrims connect with the divine heritage of Ayodhya."
+              </p>
             </div>
-            <p className="text-gray-600 italic">
-              "Dedicated to creating digital experiences that blend technology with spiritual values, helping pilgrims connect with the divine heritage of Ayodhya."
-            </p>
-          </div>
+          </AnimatedCardWrapper>
         </section>
       </div>
     </div>
