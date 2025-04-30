@@ -117,6 +117,8 @@ const ContactPage = () => {
     }, 1500);
   };
 
+  const newBg = "https://file.pngbackground.com/uploads/preview/ayodhya-ram-mandir-poster-background-hd-editing-images-cb-pic-5zvprcl.webp";
+
   return (
     <div className="page-transition pb-12 pt-16">
       <FlowerPetals />
@@ -124,7 +126,7 @@ const ContactPage = () => {
       <PageBanner 
         title="Contact Us" 
         subtitle="Get in Touch with Ayodhya Blessings" 
-        backgroundImage="/assets/images/contact us card.png"
+        backgroundImage={newBg}
       />
       
       <div className="container mx-auto px-4">
