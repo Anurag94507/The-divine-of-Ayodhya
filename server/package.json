@@ -1,16 +1,14 @@
-
 {
-  "name": "ayodhya-donation-backend-mock",
+  "name": "contact-form-backend-mock",
   "version": "1.0.0",
-  "description": "Mock backend for Razorpay donation testing",
+  "description": "Mock backend to handle contact form submission",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^16.0.3", 
-    "express": "^4.18.2" 
+    "express": "^4.18.2"
   },
   "author": "AI Assistant",
   "license": "ISC"

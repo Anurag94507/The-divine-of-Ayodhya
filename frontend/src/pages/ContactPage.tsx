@@ -4,13 +4,18 @@ import FlowerPetals from '../components/FlowerPetals';
 import { Button } from "@/components/ui/button";
 import { useToast } from '@/components/ui/use-toast';
 
+const BACKEND_URL = "http://localhost:5000";// Backend URL
+
+const response = await fetch(`${BACKEND_URL}/api/send-message`)
+// Backend URL
+
 const ContactPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const { toast } = useToast();
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,14 +23,14 @@ const ContactPage = () => {
     subject: '',
     message: ''
   });
-  
+
   const [formErrors, setFormErrors] = useState({
     name: '',
     email: '',
     phone: '',
     message: ''
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -34,7 +39,7 @@ const ContactPage = () => {
       ...prev,
       [name]: value
     }));
-    
+
     // Clear error when user types
     if (formErrors[name as keyof typeof formErrors]) {
       setFormErrors(prev => ({
@@ -52,13 +57,13 @@ const ContactPage = () => {
       phone: '',
       message: ''
     };
-    
+
     // Name validation
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
       valid = false;
     }
-    
+
     // Email validation
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
@@ -67,13 +72,13 @@ const ContactPage = () => {
       newErrors.email = 'Invalid email format';
       valid = false;
     }
-    
+
     // Phone validation (optional but if provided, must be valid)
     if (formData.phone && !/^[0-9]{10}$/.test(formData.phone.replace(/[^0-9]/g, ''))) {
       newErrors.phone = 'Please enter a valid phone number';
       valid = false;
     }
-    
+
     // Message validation
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required';
@@ -82,39 +87,66 @@ const ContactPage = () => {
       newErrors.message = 'Message should be at least 10 characters';
       valid = false;
     }
-    
+
     setFormErrors(newErrors);
     return valid;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
-    
+
     setIsSubmitting(true);
-    
-    // Simulate API call
-    setTimeout(() => {
+
+    try {
+      // Adding a small delay before the fetch call
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      const response = await fetch(`${BACKEND_URL}/api/send-message`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast({
+          title: "Message Sent Successfully",
+          description: data.message,
+          variant: "default",
+        });
+
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "Failed to send message. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
       toast({
-        title: "Message Sent Successfully",
-        description: "Thank you for reaching out. We will get back to you soon.",
-        variant: "default",
+        title: "Error",
+        description: "Failed to send message. Please check your connection and try again.",
+        variant: "destructive",
       });
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: ''
-      });
-      
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   const newBg = "https://file.pngbackground.com/uploads/preview/ayodhya-ram-mandir-poster-background-hd-editing-images-cb-pic-5zvprcl.webp";
@@ -122,13 +154,13 @@ const ContactPage = () => {
   return (
     <div className="page-transition pb-12 pt-16">
       <FlowerPetals />
-      
-      <PageBanner 
-        title="Contact Us" 
-        subtitle="Get in Touch with Ayodhya Blessings" 
+
+      <PageBanner
+        title="Contact Us"
+        subtitle="Get in Touch with Ayodhya Blessings"
         backgroundImage={newBg}
       />
-      
+
       <div className="container mx-auto px-4">
         {/* Introduction */}
         <section className="max-w-4xl mx-auto mb-16 text-center">
@@ -138,14 +170,14 @@ const ContactPage = () => {
             Fill out the form below or use our contact information to reach out to us.
           </p>
         </section>
-        
+
         {/* Contact Form and Information */}
         <section className="max-w-6xl mx-auto mb-16">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div className="bg-white p-8 rounded-lg shadow-lg">
               <h3 className="text-2xl font-bold text-ayodhya-maroon mb-6">Send us a Message</h3>
-              
+
               <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                   <label htmlFor="name" className="block text-gray-700 font-medium mb-1">Name *</label>
@@ -160,7 +192,7 @@ const ContactPage = () => {
                   />
                   {formErrors.name && <p className="mt-1 text-red-500 text-sm">{formErrors.name}</p>}
                 </div>
-                
+
                 <div className="mb-4">
                   <label htmlFor="email" className="block text-gray-700 font-medium mb-1">Email *</label>
                   <input
@@ -174,7 +206,7 @@ const ContactPage = () => {
                   />
                   {formErrors.email && <p className="mt-1 text-red-500 text-sm">{formErrors.email}</p>}
                 </div>
-                
+
                 <div className="mb-4">
                   <label htmlFor="phone" className="block text-gray-700 font-medium mb-1">Phone (Optional)</label>
                   <input
@@ -188,7 +220,7 @@ const ContactPage = () => {
                   />
                   {formErrors.phone && <p className="mt-1 text-red-500 text-sm">{formErrors.phone}</p>}
                 </div>
-                
+
                 <div className="mb-4">
                   <label htmlFor="subject" className="block text-gray-700 font-medium mb-1">Subject</label>
                   <select
@@ -207,7 +239,7 @@ const ContactPage = () => {
                     <option value="Other">Other</option>
                   </select>
                 </div>
-                
+
                 <div className="mb-6">
                   <label htmlFor="message" className="block text-gray-700 font-medium mb-1">Message *</label>
                   <textarea
@@ -221,9 +253,9 @@ const ContactPage = () => {
                   ></textarea>
                   {formErrors.message && <p className="mt-1 text-red-500 text-sm">{formErrors.message}</p>}
                 </div>
-                
-                <Button 
-                  type="submit" 
+
+                <Button
+                  type="submit"
                   className="w-full bg-ayodhya-saffron hover:bg-ayodhya-orange text-white py-3 rounded-md transition-colors"
                   disabled={isSubmitting}
                 >
@@ -231,11 +263,11 @@ const ContactPage = () => {
                 </Button>
               </form>
             </div>
-            
+
             {/* Contact Information */}
             <div>
               <h3 className="text-2xl font-bold text-ayodhya-maroon mb-6">Contact Information</h3>
-              
+
               <div className="bg-white p-6 rounded-lg shadow-md mb-6">
                 <h4 className="text-lg font-bold text-ayodhya-maroon mb-3">Ayodhya Office</h4>
                 <ul className="space-y-3">
@@ -260,7 +292,7 @@ const ContactPage = () => {
                   </li>
                 </ul>
               </div>
-              
+
               <div className="bg-white p-6 rounded-lg shadow-md mb-6">
                 <h4 className="text-lg font-bold text-ayodhya-maroon mb-3">Office Hours</h4>
                 <ul className="space-y-2">
@@ -278,7 +310,7 @@ const ContactPage = () => {
                   </li>
                 </ul>
               </div>
-              
+
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <h4 className="text-lg font-bold text-ayodhya-maroon mb-3">Follow Us</h4>
                 <div className="flex space-x-4">
@@ -297,11 +329,11 @@ const ContactPage = () => {
             </div>
           </div>
         </section>
-        
+
         {/* FAQ Section */}
         <section className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold text-ayodhya-maroon mb-8 text-center">Frequently Asked Questions</h2>
-          
+
           <div className="space-y-4">
             <div className="bg-white p-5 rounded-lg shadow-md">
               <h3 className="text-lg font-bold text-ayodhya-maroon mb-2">What are the best times to visit Ayodhya?</h3>
@@ -309,21 +341,21 @@ const ContactPage = () => {
                 The most comfortable time to visit Ayodhya is from October to March when the weather is pleasant. However, if you wish to experience the festivals, plan your visit during Ram Navami (March-April) or Diwali (October-November).
               </p>
             </div>
-            
+
             <div className="bg-white p-5 rounded-lg shadow-md">
               <h3 className="text-lg font-bold text-ayodhya-maroon mb-2">How can I book a guided tour of Ayodhya?</h3>
               <p>
                 You can book guided tours through our website or by contacting us directly via phone or email. We offer various tour packages ranging from half-day temple tours to comprehensive multi-day pilgrimages.
               </p>
             </div>
-            
+
             <div className="bg-white p-5 rounded-lg shadow-md">
               <h3 className="text-lg font-bold text-ayodhya-maroon mb-2">Are there any dress codes for visiting temples in Ayodhya?</h3>
               <p>
                 Yes, modest attire is recommended for temple visits. Men should wear shirts/t-shirts with pants or dhotis, while women should wear salwar kameez, sarees, or other modest clothing that covers shoulders and knees. Some temples may require head coverings for women.
               </p>
             </div>
-            
+
             <div className="bg-white p-5 rounded-lg shadow-md">
               <h3 className="text-lg font-bold text-ayodhya-maroon mb-2">How far is the nearest airport from Ayodhya?</h3>
               <p>
